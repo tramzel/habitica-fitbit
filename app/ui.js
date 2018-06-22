@@ -100,6 +100,6 @@ HabiticaUI.prototype.backClicks = function(onClick) {
   }
 }
 
-HabiticaUI.prototype.updateAvatar = function(fileName) {
-  this.avatar.href = fileName;
+HabiticaUI.prototype.updateAvatar = function() {
+  this.avatar.href = "/private/data/avatar.jpg";
 }

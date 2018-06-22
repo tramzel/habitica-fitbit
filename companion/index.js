@@ -25,11 +25,15 @@ messaging.peerSocket.onopen = function() {
 }
 
 function init() {
-  return login()
+  var initPromise = login()
     .then(() => messaging.peerSocket.send({ message: "Loading tasks..." }))
     .then(loadTasks)
-    .then(loadAvatar)
-    .catch(handleError);
+  
+  if (FeatureFlags.AVATAR) {
+    initPromise = init.then(loadAvatar)
+  }
+  
+  initPromise.catch(handleError);
 }
 
 function listenToMessages() {
