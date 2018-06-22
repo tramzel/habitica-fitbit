@@ -30,7 +30,7 @@ function init() {
     .then(loadTasks)
   
   if (FeatureFlags.AVATAR) {
-    initPromise = init.then(loadAvatar)
+    initPromise = initPromise.then(loadAvatar)
   }
   
   initPromise.catch(handleError);
