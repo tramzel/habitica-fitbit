@@ -1,0 +1,21 @@
+{
+  "fitbit": {
+    "appUUID": "f3b04520-6b49-4925-b55e-a05d27245ee0",
+    "appType": "app",
+    "appDisplayName": "Habitica",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#673ab7",
+    "requestedPermissions": [
+      "access_internet"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson"
+    ],
+    "i18n": {
+      "en": {
+        "name": "Habitica"
+      }
+    }
+  }
+}

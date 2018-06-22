@@ -1,0 +1,166 @@
+<svg id="root">
+  <defs>
+    <symbol id="tile-task" href="#tile-list-item" class="tile-item" pointer-events="visible">
+      <rect id="task-background" height="100%" width="100%"/>
+
+      <text id="text"/>
+
+      <rect id="tile-divider-bottom" class="tile-divider-bottom"/>
+    </symbol>
+    
+    <symbol id="tile-subtask" href="#tile-list-item" class="tile-item">
+      <use href="#checkbox-tile">
+        <set href="header/text" attributeName="text-buffer" to="Checkbox Item"/>
+      </use>
+    </symbol>
+  </defs>
+  
+  <use id="detail-task" href="#tile-list" display="none">
+    <var id="reorder-enabled" value="0"/>
+    <use height="128" href="#tile-list-item">
+      <rect id="task-background" height="100%" width="100%"/>
+      <textarea id="text"/>
+    </use>
+    <use id="subtask-0" href="#tile-subtask"/>
+    <use id="subtask-1" href="#tile-subtask"/>
+    <use id="subtask-2" href="#tile-subtask"/>
+    <use id="subtask-3" href="#tile-subtask"/>
+    <use id="subtask-4" href="#tile-subtask"/>
+    <use id="subtask-5" href="#tile-subtask"/>
+    <use id="subtask-6" href="#tile-subtask"/>
+    <use id="subtask-7" href="#tile-subtask"/>
+    <use id="subtask-8" href="#tile-subtask"/>
+    <use id="subtask-9" href="#tile-subtask"/>
+    <use id="subtask-10" href="#tile-subtask"/>
+    <use id="subtask-11" href="#tile-subtask"/>
+    <use id="subtask-12" href="#tile-subtask"/>
+    <use id="subtask-13" href="#tile-subtask"/>
+    <use id="subtask-14" href="#tile-subtask"/>
+    <use id="subtask-15" href="#tile-subtask"/>
+    <use id="subtask-16" href="#tile-subtask"/>
+    <use id="subtask-17" href="#tile-subtask"/>
+    <use id="subtask-18" href="#tile-subtask"/>
+    <use id="subtask-19" href="#tile-subtask"/>
+    <use id="buttons-habit" height="120" href="#tile-list-item">
+      <use href="#square-button-negative" id="minus" width="50%" height="110" y="5">
+        <set href="#text" attributeName="text-buffer" to="-" />
+        <set href="#text"  attributeName="font-size" to="120" />
+        <set href="#text"  attributeName="x" to="50%" />
+        <set href="#text"  attributeName="y" to="78%" />
+        <set href="#text"  attributeName="fill" to="fb-pink" />
+        <set href="#text"  attributeName="pointer-events" to="none" />
+      </use>
+      <use href="#square-button-positive" id="plus" x="50%" width="50%" height="110" y="5">
+        <set href="#text" attributeName="text-buffer" to="+" />
+        <set href="#text"  attributeName="font-size" to="120" />
+        <set href="#text"  attributeName="x" to="50%" />
+        <set href="#text"  attributeName="y" to="78%" />
+        <set href="#text"  attributeName="fill" to="fb-green" />
+        <set href="#text"  attributeName="pointer-events" to="none" />
+      </use>
+    </use>
+  </use>
+  
+  <svg>
+    <use id="menu" href="#panoramaview" pointer-events="visible" display="none">
+      <use id="item1" href="#panoramaview-item">
+        <image href="bg3.png" width="100%" height="100%"/>
+        <rect width="100%" height="100%" fill="red" opacity=".33" />
+        <text id="text" font-size="80" x="20" y="120" fill="white">Habits</text>
+      </use>
+      <use id="item2" href="#panoramaview-item">
+        <image href="bg4.png"/>
+        <rect width="100%" height="100%" fill="blue" opacity=".33" />
+        <text id="text" font-size="80" x="20" y="120" fill="white">Daily</text>
+      </use>
+      <use id="item3" href="#panoramaview-item">
+        <image href="bg5.png"/>
+        <rect width="100%" height="100%" fill="green" opacity=".33" />
+        <text id="text" font-size="80" x="20" y="120" fill="white">Todos</text>
+      </use>
+      
+      <use id="pagination-dots" href="#pagination-widget" y="8">
+        <use id="dot0" href="#pagination-dot" />
+        <use id="dot1" href="#pagination-dot" />
+        <use id="dot2" href="#pagination-dot" />
+        <use id="dot_highlight"  href="#pagination-highlight-dot" />
+      </use>
+    </use>
+  </svg>
+  
+  <svg>
+    <use id="menu-avatar" href="#panoramaview" pointer-events="visible" display="none">
+      <use id="item0" href="#panoramaview-item">
+        <image id="avatar" width="100%" height="100%" />
+      </use>
+      <use id="item1" href="#panoramaview-item">
+        <image href="bg3.png" width="100%" height="100%"/>
+        <rect width="100%" height="100%" fill="red" opacity=".33" />
+        <text id="text" font-size="80" x="20" y="120" fill="white">Habits</text>
+      </use>
+      <use id="item2" href="#panoramaview-item">
+        <image href="bg4.png"/>
+        <rect width="100%" height="100%" fill="blue" opacity=".33" />
+        <text id="text" font-size="80" x="20" y="120" fill="white">Daily</text>
+      </use>
+      <use id="item3" href="#panoramaview-item">
+        <image href="bg5.png"/>
+        <rect width="100%" height="100%" fill="green" opacity=".33" />
+        <text id="text" font-size="80" x="20" y="120" fill="white">Todos</text>
+      </use>
+      
+      <use id="pagination-dots" href="#pagination-widget" y="8">
+        <use id="dot0" href="#pagination-dot" />
+        <use id="dot1" href="#pagination-dot" />
+        <use id="dot2" href="#pagination-dot" />
+        <use id="dot3" href="#pagination-dot" />
+        <use id="dot_highlight"  href="#pagination-highlight-dot" />
+      </use>
+    </use>
+  </svg>
+  
+  <use id="list-task" href="#tile-list" height="100%" width="100%" display="none">
+    <var id="reorder-enabled" value="0"/>
+    <use id="task-0" href="#tile-task"/>
+    <use id="task-1" href="#tile-task"/>
+    <use id="task-2" href="#tile-task"/>
+    <use id="task-3" href="#tile-task"/>
+    <use id="task-4" href="#tile-task"/>
+    <use id="task-5" href="#tile-task"/>
+    <use id="task-6" href="#tile-task"/>
+    <use id="task-7" href="#tile-task"/>
+    <use id="task-8" href="#tile-task"/>
+    <use id="task-9" href="#tile-task"/>
+    <use id="task-10" href="#tile-task"/>
+    <use id="task-11" href="#tile-task"/>
+    <use id="task-12" href="#tile-task"/>
+    <use id="task-13" href="#tile-task"/>
+    <use id="task-14" href="#tile-task"/>
+    <use id="task-15" href="#tile-task"/>
+    <use id="task-16" href="#tile-task"/>
+    <use id="task-17" href="#tile-task"/>
+    <use id="task-18" href="#tile-task"/>
+    <use id="task-19" href="#tile-task"/>
+  </use>
+  
+  <svg id="status" pointer-events="visible">
+    <rect width="100%" height="100%" fill="black">
+      <animate attributeName="opacity" begin="enable" to="1" dur=".5" />
+      <animate attributeName="opacity" begin="disable" to="0" dur=".5" />
+    </rect>
+    <g>
+      <rect width="100%-40" height="100%-40" x="20" y="20" fill="white" opacity="1"/>
+      <rect width="100%-50" height="100%-50" x="25" y="25" fill="blue" opacity="1"/>
+      <textarea width="100%-60" height="100%-60" x="30" y="30" id="text" class="status" fill="white">
+        Connecting to FitBit app...
+      </textarea>
+      <animateTransform attributeType="scale" begin="enable" easing="ease-out" to="1" dur=".25" />
+      <animateTransform attributeType="scale" begin="disable" easing="ease-in" to="0" dur=".25" />
+      <animateTransform attributeType="translate" to="0%,0%" easing="ease-out" begin="enable" dur=".25" />
+      <animateTransform attributeType="translate" to="50%,50%" easing="ease-in" begin="disable" dur=".25" />
+      <animate attributeName="opacity" easing="ease-in" begin="enable" to="1" dur=".25" />
+      <animate attributeName="opacity" easing="ease-out" begin="disable" to="0" dur=".25" />
+    </g>
+  </svg>
+  
+</svg>

@@ -1,0 +1,40 @@
+text {
+  font-size: 32; 
+  x: 5%;
+  y: 50%;
+  font-family: System-Regular;
+  font-weight: regular;
+  text-length: 32;
+  fill: white;
+  text-overflow: ellipsis;
+  height: 90%;
+  width: 90%;
+}
+
+textarea {
+  font-size: 40;
+  font-family: System-Regular;
+  font-weight: regular;
+  text-length: 1024;
+  x: 20;
+  y: 20;
+  width: 100%-40;
+  height: 100%-40;
+  fill: white;
+  text-overflow: ellipsis;
+}
+
+.tile-item { x: 0; y: 0; width: 100%; height: 33%; }
+
+.tile-divider-top { x: 0; y: 0; width: 100%; height: 2; fill: white; }
+.tile-divider-bottom { x: 0; y: 100%-2; width: 100%; height: 2; fill: white; }
+
+.status {
+  text-anchor: middle;
+  display-align: center;
+  width: 90%;
+  height: 90%;
+  text-length:512;
+  font-size: 32;
+  fill: white;
+}
