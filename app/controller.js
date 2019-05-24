@@ -49,8 +49,8 @@ export function HabiticaController(ui, messages) {
   }
 
   let showTaskList = (reload, scroll) => {
-    var taskBinder;
-    var list;
+    let color = LIST_COLORS[listIndex];
+    let list;
     if (reload) {
       switch (listIndex) {
         case 1:
@@ -63,10 +63,27 @@ export function HabiticaController(ui, messages) {
           list = tasks.todos;
           break;
       }
-      taskBinder = (tile, i) => bindTask(tile, list[i], listIndex);
+      let taskBinder = {
+        getTileInfo: function(index) {
+          return {
+            type: 'list-task-pool',
+            task: list[index],
+            index: index
+          };
+        },
+        configureTile: function(tile, info) {
+          if (info.type == 'list-task-pool') {
+            tile.getElementById("text").text = info.task.text;
+            tile.getElementById("task-background").style.fill = color;
+            tile.getElementById("tile-task-touch-target").onclick = evt => {
+              showDetail(info.task, color, listIndex);
+            };
+          }
+        }
+      }
     }
     state = "list";
-    ui.showTaskList(taskBinder, scroll);
+    ui.showTaskList(taskBinder, scroll, list && list.length ? list.length : 0);
     if (list && list.length === 0) {
       ui.showStatus("No more items");
     }
