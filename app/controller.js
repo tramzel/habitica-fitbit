@@ -19,7 +19,8 @@ export function HabiticaController(ui, messages) {
 
   let onTasks = data =>{
     tasks = data;
-    if (state === "loading") {
+    if (state === "loading" || state === "list") {
+      console.log("Loading task list");
       showTaskList(true, false);
     } else {
       ui.hideStatus();
