@@ -85,7 +85,8 @@ function scoreTask(id, data) {
       rewards += "\nGP: " + json.data.gp.toFixed(1);
       rewards += "\nEXP: " + json.data.exp;
       rewards += "\nLVL: " + json.data.lvl;
-      return loadTasks().then((json) => messaging.peerSocket.send({ rewards: rewards }));
+      loadTasks();
+      messaging.peerSocket.send({ rewards: rewards });
     })
     .catch(error => messaging.peerSocket.send({ message: error.message }));
 }
