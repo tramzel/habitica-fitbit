@@ -1,7 +1,7 @@
 import document from "document";
-import { TaskTile } from "tasktile";
-import { SubTaskTile } from "subtasktile";
-import { TaskDetail } from "taskdetail";
+import { TaskTile } from "./tasktile";
+import { SubTaskTile } from "./subtasktile";
+import { TaskDetail } from "./taskdetail";
 import { FeatureFlags } from "../common/featureflags";
 
 export function HabiticaUI() {
