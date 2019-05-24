@@ -26,7 +26,7 @@ messaging.peerSocket.onopen = function() {
 
 function init() {
   var initPromise = login()
-    .then(() => messaging.peerSocket.send({ message: "Loading tasks..." }))
+    .then(() => messaging.peerSocket.send({ message: "Loading tasks...", type: "loading" }))
     .then(loadTasks)
   
   if (FeatureFlags.AVATAR) {
@@ -64,7 +64,7 @@ function loadTasks(loginJson) {
 };
 
 function loadAvatar(ft) {
-  messaging.peerSocket.send({ message: "Loading avatar..." });
+  messaging.peerSocket.send({ message: "Loading avatar...", type: "loading" });
   return habiticaApi.avatar().then(data => {
     console.log(data);
     let destFilename = "avatar.jpg";

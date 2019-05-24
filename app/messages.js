@@ -12,7 +12,7 @@ export function HabiticaMessages() {
       if (evt.data.rewards) {
         onRewards(evt.data.rewards)
       } else {
-        onStatus(evt.data.message)
+        onStatus(evt.data.message, evt.data.type)
       }
     }
   }
