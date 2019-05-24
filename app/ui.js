@@ -48,14 +48,10 @@ HabiticaUI.prototype.showMenu = function() {
   this.hideStatus();
 }
 
-HabiticaUI.prototype.showTaskList = function(bindTile, scroll) {
+HabiticaUI.prototype.showTaskList = function(bindTile, scroll, length = 0) {
   if (bindTile) {
-    for (let i = 0; i < 20; i++) {
-      let tile = this.taskTiles[i];
-      if (tile) {
-        bindTile(tile, i);
-      }
-    }
+    this.taskList.delegate = bindTile;
+    this.taskList.length = length;
   }
   if (scroll) {
     this.taskList.value = 0;
