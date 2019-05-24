@@ -1,5 +1,5 @@
 import { FeatureFlags } from "../common/featureflags";
-import { readFileSync } from "fs";
+import * as fs from "fs";
 
 export function HabiticaController(ui, messages) {
   
@@ -164,7 +164,12 @@ export function HabiticaController(ui, messages) {
     }
   });
 
-  onTasks(readFileSync("tasks.cbor", "cbor"));
+
+  try {
+    onTasks(fs.readFileSync("tasks.cbor", "cbor"));
+  } catch (err) {
+    console.error(JSON.stringify(err, null, 2));
+  }
 
   messages.messages(onStatus, onRewards);
   
