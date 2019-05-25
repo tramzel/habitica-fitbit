@@ -16,15 +16,18 @@ console.log("Companion Started");
 let habiticaApi = new HabiticaApi();
 
 settingsStorage.onchange = function(evt) {
+  console.log("Settings changed");
   init();
 }
 
 messaging.peerSocket.onopen = function() {
+  console.log("Peer socket open");
   init();
   listenToMessages();
 }
 
 function init() {
+  console.log("Companion init");
   var initPromise = login()
     .then(() => messaging.peerSocket.send({ message: "Loading tasks...", type: "loading" }))
     .then(loadTasks)
@@ -51,11 +54,35 @@ function listenToMessages() {
 function login() {
   return new Promise((resolve, reject) => {
     try {
-      var username = getSetting("username").trim();
-      var password = getSetting("password").trim();
-    } catch (error) { }
-    resolve({ username: username, password: password });
-  }).then(login => habiticaApi.login(login.username, login.password));
+      console.log("Loading api keys");
+      let userId = getSetting( "userId").trim();
+      let apiToken = getSetting("apiToken").trim();
+      resolve({userId: userId, apiToken: apiToken});
+    } catch (error) {
+      try {
+        console.log("No api keys, loading username/password");
+        var username = getSetting("username").trim();
+        var password = getSetting("password").trim();
+      } catch (error) {
+        console.error("Error loading settings");
+      }
+      // Logging in with empty credentials triggers message to configure app
+      // @TODO maybe cleaner handling
+      resolve({username: username, password: password});
+    }
+  }).then(async credentials => {
+    if ( credentials.userId ) {
+      console.log("Using stored api credentials");
+      habiticaApi.setApiKeys(credentials.userId, credentials.apiToken);
+    } else {
+      console.log("Logging in");
+      let keys = await habiticaApi.login(credentials.username, credentials.password);
+      if (keys.id && keys.apiToken) {
+        setSetting("userId", keys.id);
+        setSetting("apiToken", keys.apiToken);
+      }
+    }
+  });
 }
 
 function loadTasks(loginJson) {
@@ -100,3 +127,6 @@ function scoreSubTask(id, subId, data) {
 function getSetting(key) {
   return JSON.parse(settingsStorage.getItem(key)).name;
 }
+ function setSetting(key, val) {
+  settingsStorage.setItem(key, JSON.stringify({name: val}));
+ }
