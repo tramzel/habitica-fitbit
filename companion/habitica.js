@@ -33,7 +33,12 @@ HabiticaApi.prototype.status = function() {
   });
 }
 
-HabiticaApi.prototype.login = function(username, password) {
+HabiticaApi.prototype.setApiKeys = function(user, token) {
+  userId = user;
+  apiToken = token;
+}
+
+HabiticaApi.prototype.login = async function(username, password) {
   return fetch(LOGIN_URL, {
     body: JSON.stringify({username: username, password: password}),
     headers: { 'content-type': 'application/json' },
@@ -41,6 +46,7 @@ HabiticaApi.prototype.login = function(username, password) {
   }).then(function(response) {
     return handleResponse(response);
   }).then(function(response) {
+    console.log("Setting API keys");
     var data = response.data;
     apiToken = data.apiToken;
     userId = data.id;

@@ -16,6 +16,18 @@ function mySettings(props) {
           settingsKey="password"
           type="password"
         />
+        <Text align="center">or</Text>
+        <TextInput
+          label="User ID"
+          title="userId"
+          settingsKey="userId"
+        />
+        <TextInput
+          label="API Token"
+          title="apiToken"
+          settingsKey="apiToken"
+          type="password"
+        />
       </Section>
     </Page>
   );

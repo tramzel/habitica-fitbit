@@ -1,4 +1,5 @@
 import { FeatureFlags } from "../common/featureflags";
+import * as fs from "fs";
 
 export function HabiticaController(ui, messages) {
   
@@ -18,16 +19,20 @@ export function HabiticaController(ui, messages) {
 
   let onTasks = data =>{
     tasks = data;
-    if (state === "loading") {
+    if (state === "loading" || state === "list") {
+      console.log("Loading task list");
       showTaskList(true, false);
     } else {
       ui.hideStatus();
-      showMenu();
+      if (!state) {
+        showMenu();
+      }
     }
   }
 
-  let onStatus = message => {
+  let onStatus = (message, type) => {
     console.log(message);
+    if (type === "loading" && tasks) return;
     ui.showStatus(message);
   }
 
@@ -158,6 +163,13 @@ export function HabiticaController(ui, messages) {
       showTaskList(false, false);
     }
   });
+
+
+  try {
+    onTasks(fs.readFileSync("tasks.cbor", "cbor"));
+  } catch (err) {
+    console.error(JSON.stringify(err, null, 2));
+  }
 
   messages.messages(onStatus, onRewards);
   

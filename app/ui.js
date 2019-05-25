@@ -38,7 +38,7 @@ HabiticaUI.prototype.showStatus = function(text) {
 
 HabiticaUI.prototype.hideStatus = function(text) {
   this.status.animate("disable");
-  setTimeout(() => this.status.style.display = "none", 500);
+  setTimeout(() => this.status.style.display = "none", 1000);
 }
 
 HabiticaUI.prototype.showMenu = function() {
